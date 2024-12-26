@@ -1,0 +1,11 @@
+1. Меню
+2. Кількість кліків
+3. Затримка між кліками
+4. Час виконання кліків
+5. Область кліка
+
+1. Menu
+2. Number of clicks
+3. Delay between clicks
+4. Click execution time
+5. Click area
