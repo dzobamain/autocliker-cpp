@@ -4,7 +4,7 @@
 4. Час виконання кліків
 5. Область кліка
 
-1. Menu
+1. Menu ...
 2. Number of clicks
 3. Delay between clicks
 4. Click execution time
