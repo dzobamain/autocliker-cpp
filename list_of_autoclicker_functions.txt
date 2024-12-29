@@ -1,11 +1,15 @@
-1. Меню
-2. Кількість кліків
-3. Затримка між кліками
-4. Час виконання кліків
-5. Область кліка
+1. Меню +
+2. Кількість кліків ...
+3. Затримка між кліками ...
+4. Час виконання кліків ...
+6. Область кліка
+7. Різні одиниці параметрів
+8. Зберігання параментрів
 
-1. Menu ...
-2. Number of clicks
-3. Delay between clicks
-4. Click execution time
+1. Menu +
+2. Number of clicks ...
+3. Delay between clicks ...
+4. Click execution time ...
 5. Click area
+6. Different units of parameters
+7. Storage of parameters

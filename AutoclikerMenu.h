@@ -1,7 +1,8 @@
+#ifndef AUTOCLIKERMENU_H
+#define AUTOCLIKERMENU_H
+
 #include <iostream>
 #include <ncurses.h>
-#include <thread>
-#include <chrono>
 
 char AutoclikerMenu()
 {
@@ -16,7 +17,8 @@ char AutoclikerMenu()
     printw("2. Change delay between clicks\n");
     printw("3. Change click execution time\n");
     printw("4. Change click area\n");
-    printw("5. Start clicker\n\n");
+    printw("5. Display settings\n");
+    printw("6. Start clicker\n\n");
     printw("Press 'q' key to exit...");
 
     char menuKey;
@@ -24,11 +26,11 @@ char AutoclikerMenu()
     {
         menuKey = getch(); // Очікування введення користувача / Wait for user input
 
-        if (menuKey == '1' || menuKey == '2' || menuKey == '3' || menuKey == '4' || menuKey == '5')
+        if (menuKey == '1' || menuKey == '2' || menuKey == '3' || menuKey == '4' || menuKey == '5' || menuKey == '6')
         {
             endwin(); // Завершення роботи ncurses / End ncurses mode
             std::cout << "Your choice: " << menuKey;
-            return menuKey; // Повернення вибору користувача / Return user choice
+            return menuKey;
         }
         else if (menuKey == 'q')
         {
@@ -38,3 +40,5 @@ char AutoclikerMenu()
         }
     } while (true);
 }
+
+#endif // AUTOCLIKERMENU_H

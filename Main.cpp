@@ -3,10 +3,20 @@
 #include <iostream>
 // Header files
 #include "AutoclikerMenu.h"
+#include "AutoclikerClass.h"
 
 int main()
 {
     std::cout << "Auto clicker started" << std::endl; 
-    AutoclikerMenu();
+    //char menu = AutoclikerMenu();
+
+    Autocliker autocliker;
+
+    autocliker.ChangeParameters('1');
+    autocliker.DisplaySettings();
+    autocliker.ChangeParameters('2');
+    autocliker.DisplaySettings();
+    autocliker.ChangeParameters('3');
+    autocliker.DisplaySettings();
 }
 
