@@ -13,12 +13,12 @@ char AutoclikerMenu()
 
     clear(); // Очищення екрану перед виведенням нового меню / Clear screen before displaying new menu
     printw("Menu:\n");
-    printw("1. Change number of clicks\n");
-    printw("2. Change delay between clicks\n");
-    printw("3. Change click execution time\n");
-    printw("4. Change click area\n");
-    printw("5. Display settings\n");
-    printw("6. Start clicker\n\n");
+    printw("1. Start clicker\n");
+    printw("2. Display settings\n");
+    printw("3. Change number of clicks\n");
+    printw("4. Change delay between clicks\n");
+    printw("5. Change click execution time\n");
+    printw("6. Change time to start\n");
     printw("Press 'q' key to exit...");
 
     char menuKey;
@@ -32,9 +32,41 @@ char AutoclikerMenu()
             std::cout << "Your choice: " << menuKey;
             return menuKey;
         }
-        else if (menuKey == 'q')
+        else if (menuKey == 'q' || menuKey == 'Q')
         {
             endwin(); // Завершення роботи ncurses / End ncurses mode
+            std::cout << "The program has ended";
+            return '\0';
+        }
+    } while (true);
+}
+
+char SetClickMode()
+{
+    initscr(); 
+    noecho();
+    cbreak();
+    keypad(stdscr, TRUE); 
+
+    clear();
+    printw("Menu:\n");
+    printw("1. Click area at cursor\n");
+    printw("Press 'q' key to exit...");
+
+    char menuKey;
+    do
+    {
+        menuKey = getch(); 
+
+        if (menuKey == '1')
+        {
+            endwin(); 
+            std::cout << "Your choice: " << menuKey;
+            return menuKey;
+        }
+        else if (menuKey == 'q' || menuKey == 'Q')
+        {
+            endwin();
             std::cout << "The program has ended";
             return '\0';
         }

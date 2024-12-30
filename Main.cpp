@@ -1,22 +1,25 @@
 // Project "autoclicher_in_the_console_cpp"
 // Libraries
 #include <iostream>
+#include <thread>
+#include <chrono>
 // Header files
 #include "AutoclikerMenu.h"
 #include "AutoclikerClass.h"
 
 int main()
 {
-    std::cout << "Auto clicker started" << std::endl; 
-    //char menu = AutoclikerMenu();
+    std::cout << "Auto-clicker started" << std::endl;
 
     Autocliker autocliker;
 
-    autocliker.ChangeParameters('1');
-    autocliker.DisplaySettings();
-    autocliker.ChangeParameters('2');
-    autocliker.DisplaySettings();
-    autocliker.ChangeParameters('3');
-    autocliker.DisplaySettings();
-}
+    for (int i = 0; i < 10; i++)
+    {
+        autocliker.ClickAreaAtCursor();
+        std::this_thread::sleep_for(std::chrono::seconds(1)); 
+        std::cout << "click ";
+    }
+    std::cout << std::endl << "all";
 
+    return -1;
+}
