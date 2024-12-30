@@ -4,7 +4,7 @@
 4. Час виконання кліків +
 5. Час до запуску ...
 6. Різні одиниці параметрів
-7. Область кліка на курсор ... 
+7. Область кліка на курсор + 
 8. Зберігання параментрів
 9. Клік на область
 
@@ -14,6 +14,6 @@
 4. Click execution time +
 5. Time to start ...
 6. Different units of parameters
-7. Click area at cursor ...
+7. Click area at cursor +
 8. Storage of parameters
 9. Click on area

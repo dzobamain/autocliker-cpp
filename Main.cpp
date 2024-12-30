@@ -13,13 +13,7 @@ int main()
 
     Autocliker autocliker;
 
-    for (int i = 0; i < 10; i++)
-    {
-        autocliker.ClickAreaAtCursor();
-        std::this_thread::sleep_for(std::chrono::seconds(1)); 
-        std::cout << "click ";
-    }
-    std::cout << std::endl << "all";
+    autocliker.Cliker('1');
 
     return -1;
 }
