@@ -11,20 +11,35 @@
 class Autocliker
 {
 private:
-    int _numberOfClicks;     // кількість кліків / number of clicks
+    int _numberOfClicks; // кількість кліків / number of clicks
     int _delayBetweenClicks; // затримка між кліками (мс) / delay between clicks (ms)
     int _clickExecutionTime; // час виконання кліків (секунди) / click execution time (seconds)
-    int _timeToStart;        // час до запуску (sec) / time to start (sec)
+    int _timeToStart; // час до запуску (sec) / time to start (sec)
 
 public:
     Autocliker() : _numberOfClicks(10), _delayBetweenClicks(1000), _clickExecutionTime(10), _timeToStart(5) {}
 
     void DisplaySettings()
     {
-        std::cout << "Number of clicks = " << _numberOfClicks << "\n";
-        std::cout << "Delay between clicks = " << _delayBetweenClicks << " ms\n";
-        std::cout << "Click execution time = " << _clickExecutionTime << " seconds\n";
-        std::cout << "Time to start = " << _timeToStart << " seconds\n";
+        initscr();
+        noecho();
+        cbreak();
+        keypad(stdscr, TRUE);
+
+        clear();
+
+        printw("Settings:\n");
+        printw("Number of clicks: %d\n", _numberOfClicks);
+        printw("Delay between clicks: %d ms\n", _delayBetweenClicks);
+        printw("Click execution time: %d seconds\n", _clickExecutionTime);
+        printw("Time to start: %d seconds\n", _timeToStart);
+        printw("\nPress any key to return to the main menu...");
+
+        refresh();
+
+        getch(); 
+
+        endwin(); 
     }
 
     void ChangeParameters(char positioNumber)
@@ -80,13 +95,14 @@ public:
 
             do
             {
-                if (_numberOfClicks == 0) break;
+                if (_numberOfClicks <= 0)
+                    break;
                 this->ClickAreaAtCursor(); // кліки на курсор / click area at cursor
-                std::this_thread::sleep_for(std::chrono::milliseconds(_delayBetweenClicks)); // затримка між клаками / Delay between clicks
+                std::this_thread::sleep_for(std::chrono::milliseconds(_delayBetweenClicks)); // затримка між кліками / Delay between clicks
 
                 // якщо кліків вказано менше ніж часу програма закінчится раніше часу / If the number of clicks specified is less than the execution time, the program will finish earlier than the specified time
                 _numberOfClicks--;
-                if (_numberOfClicks <= 0)
+                if (_numberOfClicks == 0)
                 {
                     _numberOfClicks = temp;
                     break;

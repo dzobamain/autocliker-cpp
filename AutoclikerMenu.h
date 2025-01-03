@@ -29,14 +29,13 @@ char AutoclikerMenu()
         if (menuKey == '1' || menuKey == '2' || menuKey == '3' || menuKey == '4' || menuKey == '5' || menuKey == '6')
         {
             endwin(); // Завершення роботи ncurses / End ncurses mode
-            std::cout << "Your choice: " << menuKey;
+            std::cout << "Your choice: " << menuKey << std::endl;
             return menuKey;
         }
         else if (menuKey == 'q' || menuKey == 'Q')
         {
             endwin(); // Завершення роботи ncurses / End ncurses mode
-            std::cout << "The program has ended";
-            return '\0';
+            return menuKey;
         }
     } while (true);
 }
@@ -51,7 +50,7 @@ char SetClickMode()
     clear();
     printw("Menu:\n");
     printw("1. Click area at cursor\n");
-    printw("Press 'q' key to exit...");
+    printw("Press 'q' key to back...");
 
     char menuKey;
     do
@@ -61,13 +60,12 @@ char SetClickMode()
         if (menuKey == '1')
         {
             endwin(); 
-            std::cout << "Your choice: " << menuKey;
+            std::cout << "Your choice click mode: " << menuKey << std::endl;
             return menuKey;
         }
         else if (menuKey == 'q' || menuKey == 'Q')
         {
             endwin();
-            std::cout << "The program has ended";
             return '\0';
         }
     } while (true);
