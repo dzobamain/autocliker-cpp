@@ -14,7 +14,7 @@ int main()
     bool isActive = true;
     Autocliker autocliker;
 
-    do
+    do // Menu
     {
         char positioNumber = AutoclikerMenu();
         switch (positioNumber)

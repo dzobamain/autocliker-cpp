@@ -6,20 +6,20 @@
 #include <cstdlib>
 #include <thread>
 #include <chrono>
-#include <ApplicationServices/ApplicationServices.h> // для ClickAreaAtCursor / for ClickAreaAtCursor
+#include <ApplicationServices/ApplicationServices.h>
 
 class Autocliker
 {
 private:
-    int _numberOfClicks; // кількість кліків / number of clicks
-    int _delayBetweenClicks; // затримка між кліками (мс) / delay between clicks (ms)
-    int _clickExecutionTime; // час виконання кліків (секунди) / click execution time (seconds)
-    int _timeToStart; // час до запуску (sec) / time to start (sec)
+    int _numberOfClicks;
+    int _delayBetweenClicks; // ms
+    int _clickExecutionTime; // sec
+    int _timeToStart; // sec
 
 public:
-    Autocliker() : _numberOfClicks(10), _delayBetweenClicks(1000), _clickExecutionTime(10), _timeToStart(5) {}
+    Autocliker() : _numberOfClicks(10), _delayBetweenClicks(1000), _clickExecutionTime(10), _timeToStart(5) {} // By default
 
-    void DisplaySettings()
+    void DisplaySettings() // Settings
     {
         initscr();
         noecho();
@@ -42,14 +42,14 @@ public:
         endwin(); 
     }
 
-    void ChangeParameters(char positioNumber)
+    void ChangeParameters(char positioNumber) // Change parameters
     {
         if (positioNumber != '1' && positioNumber != '2' && positioNumber != '3' && positioNumber != '4')
             return;
 
         initscr();
         clear();
-        noecho(); // Вимикаємо автоматичне відображення введених символів / Disable automatic echoing of typed characters
+        noecho();
         char input[10];
 
         if (positioNumber == '1')
@@ -79,8 +79,8 @@ public:
             _timeToStart = atoi(input);
         }
 
-        refresh(); // Оновлення екрану / Update the screen
-        endwin();  // Завершення роботи ncurses / End ncurses mode
+        refresh();
+        endwin();
     }
 
     void Cliker(char positioNumber)
@@ -89,18 +89,17 @@ public:
         {
         case '1':
         {
-            std::this_thread::sleep_for(std::chrono::seconds(_timeToStart)); // час до запуску / Time to start
+            std::this_thread::sleep_for(std::chrono::seconds(_timeToStart));
             auto startTime = std::chrono::steady_clock::now();
-            int temp = _numberOfClicks; // збереження даних / Save date
+            int temp = _numberOfClicks;
 
             do
             {
                 if (_numberOfClicks <= 0)
                     break;
-                this->ClickAreaAtCursor(); // кліки на курсор / click area at cursor
-                std::this_thread::sleep_for(std::chrono::milliseconds(_delayBetweenClicks)); // затримка між кліками / Delay between clicks
+                this->ClickAreaAtCursor(); 
+                std::this_thread::sleep_for(std::chrono::milliseconds(_delayBetweenClicks));
 
-                // якщо кліків вказано менше ніж часу програма закінчится раніше часу / If the number of clicks specified is less than the execution time, the program will finish earlier than the specified time
                 _numberOfClicks--;
                 if (_numberOfClicks == 0)
                 {
@@ -117,7 +116,7 @@ public:
         }
     }
 
-    void ClickAreaAtCursor() // взято з / Taken from https://github.com/MataiMoorfield/Auto-clicker
+    void ClickAreaAtCursor() // Click area at cursor
     {
         CGEventRef ourEvent = CGEventCreate(NULL);
         CGPoint point = CGEventGetLocation(ourEvent);

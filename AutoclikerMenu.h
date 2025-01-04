@@ -4,14 +4,14 @@
 #include <iostream>
 #include <ncurses.h>
 
-char AutoclikerMenu()
+char AutoclikerMenu() // Autocliker menu
 {
-    initscr(); // Ініціалізація ncurses / Initialize ncurses
-    noecho(); // Вимкнення автоматичного виводу клавіш / Disable automatic echoing of typed characters
-    cbreak(); // Мгновенне прийняття введення з клавіатури / Make terminal input available immediately
-    keypad(stdscr, TRUE); // Увімкнення роботи з функціональними клавішами / Enable reading of function keys
+    initscr(); 
+    noecho();
+    cbreak();
+    keypad(stdscr, TRUE);
 
-    clear(); // Очищення екрану перед виведенням нового меню / Clear screen before displaying new menu
+    clear();
     printw("Menu:\n");
     printw("1. Start clicker\n");
     printw("2. Display settings\n");
@@ -24,23 +24,23 @@ char AutoclikerMenu()
     char menuKey;
     do
     {
-        menuKey = getch(); // Очікування введення користувача / Wait for user input
+        menuKey = getch();
 
         if (menuKey == '1' || menuKey == '2' || menuKey == '3' || menuKey == '4' || menuKey == '5' || menuKey == '6')
         {
-            endwin(); // Завершення роботи ncurses / End ncurses mode
+            endwin(); 
             std::cout << "Your choice: " << menuKey << std::endl;
             return menuKey;
         }
         else if (menuKey == 'q' || menuKey == 'Q')
         {
-            endwin(); // Завершення роботи ncurses / End ncurses mode
+            endwin();
             return menuKey;
         }
     } while (true);
 }
 
-char SetClickMode()
+char SetClickMode() // Click mode menu
 {
     initscr(); 
     noecho();
