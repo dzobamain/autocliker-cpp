@@ -43,9 +43,9 @@ public:
         endwin(); 
     }
 
-    void ChangeParameters(char positioNumber)
+    void ChangeParameters(char positionNumber)
     {
-        if (positioNumber != '1' && positioNumber != '2' && positioNumber != '3' && positioNumber != '4')
+        if (positionNumber != '1' && positionNumber != '2' && positionNumber != '3' && positionNumber != '4')
             return;
 
         initscr();
@@ -53,29 +53,27 @@ public:
         noecho();
         char input[10];
 
-        if (positioNumber == '1')
+        if (positionNumber == '1')
         {
             printw("Enter number of clicks: ");
             getstr(input);
             _numberOfClicks = atoi(input);
         }
-        else if (positioNumber == '2')
+        else if (positionNumber == '2')
         {
             printw("Delay between clicks: ");
             getstr(input);
             _delayBetweenClicks = atoi(input);
         }
-        else if (positioNumber == '3')
+        else if (positionNumber == '3')
         {
             printw("Click execution time: ");
-            ;
             getstr(input);
             _clickExecutionTime = atoi(input);
         }
-        else if (positioNumber == '4')
+        else if (positionNumber == '4')
         {
-            printw("Click execution time: ");
-            ;
+            printw("Time to start: ");
             getstr(input);
             _timeToStart = atoi(input);
         }
@@ -106,9 +104,9 @@ public:
         CFRelease(click_up);
     }
 
-    void Cliker(char positioNumber)
+    void Cliker(char positionNumber)
     {
-        switch (tolower(positioNumber))
+        switch (tolower(positionNumber))
         {
             case '1':
             {
@@ -130,11 +128,12 @@ public:
                         break;
                     }
                 } while (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - startTime).count() < _clickExecutionTime);
+                break;
+            }
             case 'q':
                 break;
             default:
                 break;
-            }
         }
     }
 };

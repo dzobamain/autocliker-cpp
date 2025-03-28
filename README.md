@@ -18,7 +18,7 @@
 
 Code Compilation (Console)
 ```
-g++ main.cpp -o autoclicker -framework ApplicationServices -lncurses -std=c++11
+./build.sh
 ```
 "AutoClicker" can be changed; it is the name of the compiled code  
 
