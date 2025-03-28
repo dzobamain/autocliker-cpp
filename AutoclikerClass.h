@@ -19,7 +19,7 @@ private:
 public:
     Autocliker() : _numberOfClicks(10), _delayBetweenClicks(1000), _clickExecutionTime(10), _timeToStart(5) {} // By default
 
-    void DisplaySettings() // Settings
+    void DisplaySettings()
     {
         initscr();
         noecho();
@@ -42,7 +42,7 @@ public:
         endwin(); 
     }
 
-    void ChangeParameters(char positioNumber) // Change parameters
+    void ChangeParameters(char positioNumber)
     {
         if (positioNumber != '1' && positioNumber != '2' && positioNumber != '3' && positioNumber != '4')
             return;
@@ -85,7 +85,7 @@ public:
 
     void Cliker(char positioNumber)
     {
-        switch (positioNumber)
+        switch (toLower(positioNumber))
         {
         case '1':
         {
@@ -106,17 +106,15 @@ public:
                     _numberOfClicks = temp;
                     break;
                 }
-            } while (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - startTime).count() < _clickExecutionTime); // таймер виконання / Execution timer
-        }
+            } while (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - startTime).count() < _clickExecutionTime);
         case 'q':
-        case 'Q':
             break;
         default:
             break;
         }
     }
 
-    void ClickAreaAtCursor() // Click area at cursor
+    void ClickAreaAtCursor()
     {
         CGEventRef ourEvent = CGEventCreate(NULL);
         CGPoint point = CGEventGetLocation(ourEvent);

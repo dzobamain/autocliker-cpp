@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include <ncurses.h>
+#include <cctype>
 
-char AutoclikerMenu() // Autocliker menu
+char AutoclikerMenu()
 {
     initscr(); 
     noecho();
@@ -32,7 +33,7 @@ char AutoclikerMenu() // Autocliker menu
             std::cout << "Your choice: " << menuKey << std::endl;
             return menuKey;
         }
-        else if (menuKey == 'q' || menuKey == 'Q')
+        else if (tolower(menuKey) == 'q')
         {
             endwin();
             return menuKey;
@@ -40,7 +41,7 @@ char AutoclikerMenu() // Autocliker menu
     } while (true);
 }
 
-char SetClickMode() // Click mode menu
+char SetClickMode()
 {
     initscr(); 
     noecho();
@@ -63,7 +64,7 @@ char SetClickMode() // Click mode menu
             std::cout << "Your choice click mode: " << menuKey << std::endl;
             return menuKey;
         }
-        else if (menuKey == 'q' || menuKey == 'Q')
+        else if (tolower(menuKey) == 'q')
         {
             endwin();
             return '\0';
