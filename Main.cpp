@@ -4,8 +4,8 @@
 #include <thread>
 #include <chrono>
 // Header files
-#include "AutoclikerMenu.h"
-#include "AutoclikerClass.h"
+#include "autoclikerMenu.h"
+#include "autoclikerClass.h"
 
 int main()
 {

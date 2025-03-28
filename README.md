@@ -18,14 +18,14 @@
 
 Code Compilation (Console)
 ```
-g++ main.cpp -o AutoClicker -framework ApplicationServices -lncurses -std=c++11
+g++ main.cpp -o autoclicker -framework ApplicationServices -lncurses -std=c++11
 ```
 "AutoClicker" can be changed; it is the name of the compiled code  
 
 ## Run
 Running the program
 ```
-./AutoClicker
+./autoclicker
 ````
 
 
