@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <thread>
 #include <chrono>
+#include <cctype>
 #include <ApplicationServices/ApplicationServices.h>
 
 class Autocliker
@@ -83,37 +84,6 @@ public:
         endwin();
     }
 
-    void Cliker(char positioNumber)
-    {
-        switch (toLower(positioNumber))
-        {
-        case '1':
-        {
-            std::this_thread::sleep_for(std::chrono::seconds(_timeToStart));
-            auto startTime = std::chrono::steady_clock::now();
-            int temp = _numberOfClicks;
-
-            do
-            {
-                if (_numberOfClicks <= 0)
-                    break;
-                this->ClickAreaAtCursor(); 
-                std::this_thread::sleep_for(std::chrono::milliseconds(_delayBetweenClicks));
-
-                _numberOfClicks--;
-                if (_numberOfClicks == 0)
-                {
-                    _numberOfClicks = temp;
-                    break;
-                }
-            } while (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - startTime).count() < _clickExecutionTime);
-        case 'q':
-            break;
-        default:
-            break;
-        }
-    }
-
     void ClickAreaAtCursor()
     {
         CGEventRef ourEvent = CGEventCreate(NULL);
@@ -134,6 +104,38 @@ public:
 
         CFRelease(click_down);
         CFRelease(click_up);
+    }
+
+    void Cliker(char positioNumber)
+    {
+        switch (tolower(positioNumber))
+        {
+            case '1':
+            {
+                std::this_thread::sleep_for(std::chrono::seconds(_timeToStart));
+                auto startTime = std::chrono::steady_clock::now();
+                int temp = _numberOfClicks;
+
+                do
+                {
+                    if (_numberOfClicks <= 0)
+                        break;
+                    this->ClickAreaAtCursor(); 
+                    std::this_thread::sleep_for(std::chrono::milliseconds(_delayBetweenClicks));
+
+                    _numberOfClicks--;
+                    if (_numberOfClicks == 0)
+                    {
+                        _numberOfClicks = temp;
+                        break;
+                    }
+                } while (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - startTime).count() < _clickExecutionTime);
+            case 'q':
+                break;
+            default:
+                break;
+            }
+        }
     }
 };
 
