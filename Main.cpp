@@ -4,8 +4,8 @@
 #include <thread>
 #include <chrono>
 // Header files
-#include "autoclikerMenu.h"
 #include "autoclikerClass.h"
+#include "autoclikerMenu.h"
 
 int main()
 {
@@ -14,7 +14,7 @@ int main()
     bool isActive = true;
     Autocliker autocliker;
 
-    do // Menu
+    do
     {
         char positioNumber = AutoclikerMenu();
         switch (positioNumber)
