@@ -66,6 +66,19 @@ void Autocliker::ChangeParameters(char positionNumber) {
     endwin();
 }
 
+#ifdef WIN32
+#include <windows.h>
+
+void Autocliker::ClickAreaAtCursor() 
+{
+    POINT p;
+    if (GetCursorPos(&p)) {
+        mouse_event(MOUSEEVENTF_LEFTDOWN, p.x, p.y, 0, 0);
+
+        mouse_event(MOUSEEVENTF_LEFTUP, p.x, p.y, 0, 0);
+    }
+}
+#else
 void Autocliker::ClickAreaAtCursor() {
     CGEventRef ourEvent = CGEventCreate(NULL);
     CGPoint point = CGEventGetLocation(ourEvent);
@@ -86,6 +99,7 @@ void Autocliker::ClickAreaAtCursor() {
     CFRelease(click_down);
     CFRelease(click_up);
 }
+#endif
 
 void Autocliker::Cliker(char positionNumber) {
     switch (tolower(positionNumber)) {
