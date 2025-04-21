@@ -1,4 +1,9 @@
-# Autocliker for MacOS.cpp
+# Autocliker
+
+## Description
+
+A simple auto clicker for your PC, with click interval settings, a delay before start, and other basic auto-clicker features.
+
 ## Installation Guide
 
 1. Install **Homebrew**

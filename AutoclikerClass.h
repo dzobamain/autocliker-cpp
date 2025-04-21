@@ -9,7 +9,7 @@
 #include <cctype>
 #include <ApplicationServices/ApplicationServices.h>
 
-class Autocliker // Повне оголошення класу
+class Autocliker
 {
 private:
     int _numberOfClicks;
