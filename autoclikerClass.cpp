@@ -6,11 +6,12 @@
 #include <thread>
 #include <chrono>
 #include <cctype>
-#include <ApplicationServices/ApplicationServices.h>
 
+// Default
 Autocliker::Autocliker() : _numberOfClicks(10), _delayBetweenClicks(1000), _clickExecutionTime(10), _timeToStart(5) {}
 
-void Autocliker::DisplaySettings() {
+void Autocliker::DisplaySettings() 
+{
     initscr();
     noecho();
     cbreak();
@@ -30,13 +31,12 @@ void Autocliker::DisplaySettings() {
     endwin();
 }
 
-void Autocliker::ChangeParameters(char positionNumber) {
-    if (positionNumber < '1' || positionNumber > '4')
-        return;
-
+void Autocliker::ChangeParameters(char positionNumber) 
+{
     initscr();
     clear();
     noecho();
+
     char input[10];
 
     switch (positionNumber) {
@@ -60,6 +60,8 @@ void Autocliker::ChangeParameters(char positionNumber) {
             getstr(input);
             _timeToStart = atoi(input);
             break;
+        default:
+            break;
     }
 
     refresh();
@@ -78,8 +80,12 @@ void Autocliker::ClickAreaAtCursor()
         mouse_event(MOUSEEVENTF_LEFTUP, p.x, p.y, 0, 0);
     }
 }
+
 #else
-void Autocliker::ClickAreaAtCursor() {
+#include <ApplicationServices/ApplicationServices.h>
+
+void Autocliker::ClickAreaAtCursor() 
+{
     CGEventRef ourEvent = CGEventCreate(NULL);
     CGPoint point = CGEventGetLocation(ourEvent);
     CFRelease(ourEvent);
@@ -99,9 +105,11 @@ void Autocliker::ClickAreaAtCursor() {
     CFRelease(click_down);
     CFRelease(click_up);
 }
+
 #endif
 
-void Autocliker::Cliker(char positionNumber) {
+void Autocliker::Cliker(char positionNumber) 
+{
     switch (tolower(positionNumber)) {
         case '1': {
             std::this_thread::sleep_for(std::chrono::seconds(_timeToStart));

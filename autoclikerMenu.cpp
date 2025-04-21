@@ -7,7 +7,7 @@
 
 char AutoclikerMenu()
 {
-    initscr(); 
+    initscr();
     noecho();
     cbreak();
     keypad(stdscr, TRUE);
@@ -23,20 +23,27 @@ char AutoclikerMenu()
     printw("Press 'q' key to exit...");
 
     char menuKey;
-    do
-    {
+    do {
         menuKey = getch();
 
-        if (menuKey == '1' || menuKey == '2' || menuKey == '3' || menuKey == '4' || menuKey == '5' || menuKey == '6')
-        {
-            endwin(); 
+        switch (menuKey) {
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6': {
+            endwin();
             std::cout << "Your choice: " << menuKey << std::endl;
             return menuKey;
         }
-        else if (tolower(menuKey) == 'q')
-        {
+        case 'q':
+        case 'Q': {
             endwin();
             return menuKey;
+        }
+        default:
+            break;
         }
     } while (true);
 }
@@ -47,43 +54,43 @@ bool SetMenuMode(Autocliker autocliker, bool isActive)
 
     switch (positioNumber)
     {
-    case '1':
-    {
-        char positioClickMode = SetClickMode();
-        autocliker.Cliker(positioClickMode);
-        break;
+        case '1':
+        {
+            char positioClickMode = SetClickMode();
+            autocliker.Cliker(positioClickMode);
+            break;
+        }
+        case '2':
+            autocliker.DisplaySettings();
+            break;
+        case '3':
+            autocliker.ChangeParameters('1');
+            break;
+        case '4':
+            autocliker.ChangeParameters('2');
+            break;
+        case '5':
+            autocliker.ChangeParameters('3');
+            break;
+        case '6':
+            autocliker.ChangeParameters('4');
+            break;
+        case 'q':
+        case 'Q':
+            return isActive = false;
+        default:
+            break;
     }
-    case '2':
-        autocliker.DisplaySettings();
-        break;
-    case '3':
-        autocliker.ChangeParameters('1');
-        break;
-    case '4':
-        autocliker.ChangeParameters('2');
-        break;
-    case '5':
-        autocliker.ChangeParameters('3');
-        break;
-    case '6':
-        autocliker.ChangeParameters('4');
-        break;
-    case 'q':
-    case 'Q':
-        return isActive = false;
-        break;
-    default:
-        std::cout << "Invalid option. Try again." << std::endl;
-        break;
-    }
+
+    return true;
 }
 
 char SetClickMode()
 {
-    initscr(); 
+    initscr();
     noecho();
     cbreak();
-    keypad(stdscr, TRUE); 
+    keypad(stdscr, TRUE);
 
     clear();
     printw("Menu:\n");
@@ -91,18 +98,15 @@ char SetClickMode()
     printw("Press 'q' key to back...");
 
     char menuKey;
-    do
-    {
-        menuKey = getch(); 
+    do {
+        menuKey = getch();
 
-        if (menuKey == '1')
-        {
-            endwin(); 
+        if (menuKey == '1') {
+            endwin();
             std::cout << "Your choice click mode: " << menuKey << std::endl;
             return menuKey;
         }
-        else if (tolower(menuKey) == 'q')
-        {
+        else if (tolower(menuKey) == 'q') {
             endwin();
             return '\0';
         }

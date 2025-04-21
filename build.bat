@@ -2,6 +2,7 @@
 
 set OUT=autoclicker.exe
 
+set SRC=
 for /R %%f in (*.cpp) do (
     set SRC=!SRC! "%%f"
 )
@@ -15,3 +16,4 @@ if %ERRORLEVEL%==0 (
 )
 
 pause
+

@@ -4,7 +4,7 @@ OUT="autoclicker"
 
 SRC=$(find . -name "*.cpp")
 
-g++ -std=c++11 $SRC -o $OUT -lncurses
+g++ -std=c++11 $SRC -o $OUT -framework ApplicationServices -lncurses
 
 if [ $? -eq 0 ]; then
     echo "Compilation successful. Output: $OUT"
