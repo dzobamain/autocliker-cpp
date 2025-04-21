@@ -1,4 +1,5 @@
 #include "autoclikerMenu.h"
+#include "autoclikerClass.h"
 
 #include <iostream>
 #include <ncurses.h>
@@ -38,6 +39,43 @@ char AutoclikerMenu()
             return menuKey;
         }
     } while (true);
+}
+
+bool SetMenuMode(Autocliker autocliker, bool isActive)
+{
+    char positioNumber = AutoclikerMenu();
+
+    switch (positioNumber)
+    {
+    case '1':
+    {
+        char positioClickMode = SetClickMode();
+        autocliker.Cliker(positioClickMode);
+        break;
+    }
+    case '2':
+        autocliker.DisplaySettings();
+        break;
+    case '3':
+        autocliker.ChangeParameters('1');
+        break;
+    case '4':
+        autocliker.ChangeParameters('2');
+        break;
+    case '5':
+        autocliker.ChangeParameters('3');
+        break;
+    case '6':
+        autocliker.ChangeParameters('4');
+        break;
+    case 'q':
+    case 'Q':
+        return isActive = false;
+        break;
+    default:
+        std::cout << "Invalid option. Try again." << std::endl;
+        break;
+    }
 }
 
 char SetClickMode()
