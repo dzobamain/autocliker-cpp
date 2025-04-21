@@ -6,18 +6,19 @@ A simple auto clicker for your PC, with click interval settings, a delay before 
 
 ## Installation Guide
 
-1. Install **Homebrew**
-   + https://brew.sh/
-   + ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"```
-2. Install **g++**
+1. Install **gcc**
     + https://gcc.gnu.org/
-    + ```bash brew install g++```
-3. Install **ncurses** library
+    + linux: ```sudo apt install build-essential```
+    + macOS: ``` brew install gcc```
+    + windows: ```pacman -S mingw-w64-ucrt-x86_64-gcc```
+2. Install **ncurses** library
     + https://invisible-island.net/ncurses/
-    + ```brew install ncurses```
-4. Install **Autocliker_for_MacOS_cpp**
-    1. ```git clone https://github.com/Dzobamain/Autocliker_for_MacOS_cpp.git```
-    2. ```cd Autocliker_for_MacOS_cpp```
+    + linux: ```sudo apt install libncurses5-dev libncursesw5-dev```
+    + macOS:```brew install ncurses```
+    + windows: ```pacman -S mingw-w64-ucrt-x86_64-ncurses```
+3. Install **autocliker-cpp**
+    1. ```git clone https://github.com/dzobamain/autocliker-cpp```
+    2. ```cd autocliker-cpp```
    
 ## How to Compile and Run
 
