@@ -68,7 +68,7 @@ void Autocliker::ChangeParameters(char positionNumber)
     endwin();
 }
 
-#ifdef WIN32
+#ifdef _WIN32
 #include <windows.h>
 
 void Autocliker::ClickAreaAtCursor() 
@@ -81,7 +81,7 @@ void Autocliker::ClickAreaAtCursor()
     }
 }
 
-#else
+#elif __APPLE__
 #include <ApplicationServices/ApplicationServices.h>
 
 void Autocliker::ClickAreaAtCursor() 
@@ -105,6 +105,32 @@ void Autocliker::ClickAreaAtCursor()
     CFRelease(click_down);
     CFRelease(click_up);
 }
+
+#elif __linux__
+#include <X11/Xlib.h>
+#include <X11/extensions/XTest.h>
+#include <unistd.h>
+
+void Autocliker::ClickAreaAtCursor() 
+{
+    Display* display = XOpenDisplay(NULL);
+    if (display == NULL) {
+        fprintf(stderr, "Unable to open X display\n");
+        return;
+    }
+
+    XTestFakeButtonEvent(display, 1, True, CurrentTime);
+    XFlush(display);
+    usleep(10000);
+
+    XTestFakeButtonEvent(display, 1, False, CurrentTime);
+    XFlush(display);
+
+    XCloseDisplay(display);
+}
+
+#else
+    #error "Unsupported platform"
 
 #endif
 
