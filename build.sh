@@ -1,18 +1,25 @@
 #!/bin/bash
 
 OUT="autoclicker"
+BUILD_DIR="build"
+
+mkdir -p "$BUILD_DIR"
 
 SRC=(
-    main.cpp
-    choose.cpp
-    Autocliker.cpp
-    AutoclikerMenu.cpp
+    src/main.cpp
+    src/choose.cpp
+    src/Autocliker.cpp
+    src/AutoclikerMenu.cpp
 )
 
-g++ -std=c++17 "${SRC[@]}" -o "$OUT" -lncurses -framework ApplicationServices
+INCLUDE_DIRS=(
+    -Iinclude
+)
+
+g++ -std=c++17 "${SRC[@]}" "${INCLUDE_DIRS[@]}" -o "$BUILD_DIR/$OUT" -lncurses -framework ApplicationServices
 
 if [ $? -eq 0 ]; then
-    echo "Compilation successful. Output: $OUT"
+    echo "Compilation successful. Output: $BUILD_DIR/$OUT"
 else
     echo "Compilation failed."
 fi

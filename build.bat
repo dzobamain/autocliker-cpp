@@ -1,16 +1,23 @@
 @echo off
-set OUT=autoclicker.exe
+set OUT=autoclicker
+set BUILD_DIR=build
 
-REM Список файлів
-set SRC=main.cpp choose.cpp Autocliker.cpp AutoclikerMenu.cpp
+if not exist "%BUILD_DIR%" (
+    mkdir "%BUILD_DIR%"
+)
 
-REM Компіляція
-g++ -std=c++17 %SRC% -o %OUT% -lncursesw
+REM
+set SRC=src\main.cpp src\choose.cpp src\Autocliker.cpp src\AutoclikerMenu.cpp
+
+REM 
+set INCLUDE_DIRS=-Iinclude
+
+REM
+g++ -std=c++17 %SRC% %INCLUDE_DIRS% -o %BUILD_DIR%\%OUT% -lncurses
 
 IF %ERRORLEVEL% EQU 0 (
-    echo Compilation successful. Output: %OUT%
+    echo Compilation successful. Output: %BUILD_DIR%\%OUT%
 ) ELSE (
     echo Compilation failed.
 )
-
 pause

@@ -1,5 +1,3 @@
-#include "Autocliker.h"
-
 #include <thread>
 #include <chrono>
 
@@ -14,6 +12,8 @@
 #else
 #error "Unsupported platform"
 #endif
+
+#include <Autocliker.h>
 
 void Autocliker::StartClickingAtCursor(int number_of_clicks, const int &delay_between_clicks, const int &click_execution_time, const int &time_to_start)
 {

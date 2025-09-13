@@ -1,10 +1,10 @@
-#include <iostream>
 #include <ncurses.h>
-#include <cctype>
+#include <vector>
+#include <string>
 
-#include "choose.h"
-#include "AutoclikerMenu.h"
-#include "Autocliker.h"
+#include <choose.h>
+#include <AutoclikerMenu.h>
+#include <Autocliker.h>
 
 AutoclikerMenu::AutoclikerMenu() : number_of_clicks(10), delay_between_clicks(1000), click_execution_time(10), time_to_start(5) {}
 

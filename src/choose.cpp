@@ -1,8 +1,8 @@
-#include "choose.h"
-
 #include <ncurses.h>
 #include <vector>
 #include <string>
+
+#include <choose.h>
 
 int choose(const std::vector<std::string> &options, const std::string &text)
 {

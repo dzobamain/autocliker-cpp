@@ -2,15 +2,8 @@
  *  main.cpp
  */
 
-#include <ncurses.h>
-#include <vector>
-#include <string>
-
-#include <iostream>
-
-#include "choose.h"
-//#include "Autocliker.h"
-#include "AutoclikerMenu.h"
+#include <choose.h>
+#include <AutoclikerMenu.h>
 
 int main()
 {
