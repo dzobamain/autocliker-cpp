@@ -1,19 +1,16 @@
 @echo off
-
 set OUT=autoclicker.exe
 
-set SRC=
-for /R %%f in (*.cpp) do (
-    set SRC=!SRC! "%%f"
-)
+REM Список файлів
+set SRC=main.cpp choose.cpp Autocliker.cpp AutoclikerMenu.cpp
 
-g++ -std=c++11 %SRC% -o %OUT% -lncurses
+REM Компіляція
+g++ -std=c++17 %SRC% -o %OUT% -lncursesw
 
-if %ERRORLEVEL%==0 (
+IF %ERRORLEVEL% EQU 0 (
     echo Compilation successful. Output: %OUT%
-) else (
+) ELSE (
     echo Compilation failed.
 )
 
 pause
-

@@ -2,9 +2,14 @@
 
 OUT="autoclicker"
 
-SRC=$(find . -name "*.cpp")
+SRC=(
+    main.cpp
+    choose.cpp
+    Autocliker.cpp
+    AutoclikerMenu.cpp
+)
 
-g++ -std=c++11 $SRC -o $OUT -framework ApplicationServices -lncurses
+g++ -std=c++17 "${SRC[@]}" -o "$OUT" -lncurses -framework ApplicationServices
 
 if [ $? -eq 0 ]; then
     echo "Compilation successful. Output: $OUT"

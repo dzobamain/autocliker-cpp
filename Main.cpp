@@ -1,27 +1,31 @@
 /*
-    Autoclicher.cpp    
-*/
+ *  main.cpp
+ */
+
+#include <ncurses.h>
+#include <vector>
+#include <string>
 
 #include <iostream>
-#include <thread>
-#include <chrono>
 
-#include "autoclikerClass.h"
-#include "autoclikerMenu.h"
+#include "choose.h"
+//#include "Autocliker.h"
+#include "AutoclikerMenu.h"
 
 int main()
 {
-    std::cout << "Auto-clicker started" << std::endl;
+    setlocale(LC_ALL, "");
 
-    bool isActive = true;
-    Autocliker autocliker;
+    int isActive;
+    AutoclikerMenu autoclikerMenu;
+
+    //std::vector<std::string> languages = {"English (en)", "Українська (ua)"};
+    //int lang = choose(languages, "Select language");
 
     do
     {
-        isActive = SetMenuMode(autocliker, isActive);
-    } while (isActive);
-
-    std::cout << "Auto-cliker ended\n";
+        isActive = autoclikerMenu.menu();
+    } while (isActive != -1);
 
     return -1;
 }
