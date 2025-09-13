@@ -1,42 +1,97 @@
-# Autocliker
+# Autocliker 🎯
 
 ## Description
 
-A simple auto clicker for your PC, with click interval settings, a delay before start, and other basic auto-clicker features.
+**Autocliker** — a simple and fun console auto-clicker for your PC! 🖱️  
+It allows you to configure:
 
-## Installation Guide
+- Number of clicks  
+- Delay between clicks  
+- Click execution time  
+- Time before start ⏱️  
 
-1. Install **gcc**
-    + https://gcc.gnu.org/
-    + linux: ```sudo apt install build-essential```
-    + macOS: ``` brew install gcc```
-    + windows: ```pacman -S mingw-w64-ucrt-x86_64-gcc```
-2. Install **ncurses** library
-    + https://invisible-island.net/ncurses/
-    + linux: ```sudo apt install libncurses5-dev libncursesw5-dev```
-    + macOS:```brew install ncurses```
-    + windows: ```pacman -S mingw-w64-ucrt-x86_64-ncurses```
-3. Install **autocliker-cpp**
-    1. ```git clone https://github.com/dzobamain/autocliker-cpp```
-    2. ```cd autocliker-cpp```
-   
-## How to Compile and Run
+For now, the auto-clicker only works at the cursor position, but don’t worry — it’s easy to extend and add your own functionality in the future! 🚀  
 
-Code Compilation (Console)
+Supported platforms: **Windows, macOS, Linux** 💻
 
-### Linux/MacOS
-```
+---
+
+## Currently Implemented ✅
+
+- Clicks at cursor position 🖱️  
+
+*(More features will be added here in the future… stay tuned!)*
+
+---
+
+## Installation Guide 🛠️
+
+<p align="center">
+    <a href="https://gcc.gnu.org/">
+        <img src="https://img.shields.io/badge/install-gcc-blue" alt="gcc">
+    </a>
+    <a href="https://invisible-island.net/ncurses/">
+        <img src="https://img.shields.io/badge/install-ncurses-orange" alt="ncurses">
+    </a>
+    <a href="https://git-scm.com/">
+        <img src="https://img.shields.io/badge/install-git-red" alt="git">
+    </a>
+</p>
+
+1. Install **gcc**  
+    - [GCC Official](https://gcc.gnu.org/)  
+    - Linux: 
+      ```bash
+      sudo apt install build-essential
+      ```
+    - macOS: 
+      ```bash
+      brew install gcc
+      ```
+    - Windows (MSYS2):
+      ```bash
+      pacman -S mingw-w64-ucrt-x86_64-gcc
+      ```
+
+2. Install the **ncurses** library  
+    - [Ncurses Official](https://invisible-island.net/ncurses/)  
+    - Linux:
+      ```bash
+      sudo apt install libncurses5-dev libncursesw5-dev
+      ```
+    - macOS:
+      ```bash
+      brew install ncurses
+      ```
+    - Windows (MSYS2):
+      ```bash
+      pacman -S mingw-w64-ucrt-x86_64-ncurses
+      ```
+
+3. Clone the project:
+    ```bash
+    git clone https://github.com/dzobamain/autocliker-cpp
+    cd autocliker-cpp
+    ```
+
+---
+
+## Compilation and Running 🚀
+
+### Linux/macOS
+
+The compiled file will be created in the `build/` folder 🎉
+
+```bash
 ./build.sh
+./build/autoclicker
 ```
-```
-./autoclicker
-````
-
 
 ### Windows
+
+The compiled file will be created in the build\ folder 🎉
+
 ```
-./build.bat
+build.bat
+build\autoclicker.exe
 ```
-```
-autoclicker.exe
-````
