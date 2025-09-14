@@ -10,6 +10,7 @@ SRC=(
     src/choose.cpp
     src/Autocliker.cpp
     src/AutoclikerMenu.cpp
+    src/settings.cpp
 )
 
 INCLUDE_DIRS=(

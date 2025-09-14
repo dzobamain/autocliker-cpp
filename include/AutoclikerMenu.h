@@ -2,27 +2,22 @@
 #define AUTOCLIKERMENU_H
 
 #include "Autocliker.h"
+#include "settings.h"
 
 class AutoclikerMenu
 {
 private:
     Autocliker autocliker;
-
-    int number_of_clicks;
-    int delay_between_clicks; // ms
-    int click_execution_time; // sec
-    int time_to_start; // sec
-
+    settings set;
+    
 public:
     AutoclikerMenu();
+    
     int menu();
     void select_click_mode();
     void display_settings();
     void change_parameters();
+    void change_language();
 };
-
-/*
-bool SetMenuMode(Autocliker autocliker, bool isActive);
-*/
 
 #endif // AUTOCLIKERMENU_H

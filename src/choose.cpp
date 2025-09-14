@@ -14,23 +14,33 @@ int choose(const std::vector<std::string> &options, const std::string &text)
     cbreak();
     keypad(stdscr, TRUE);
 
+    std::vector<std::string> text_lines;
+    size_t pos = 0, prev = 0;
+    while ((pos = text.find('\n', prev)) != std::string::npos)
+    {
+        text_lines.push_back(text.substr(prev, pos - prev));
+        prev = pos + 1;
+    }
+    text_lines.push_back(text.substr(prev));
+
     while (true)
     {
         clear();
-        mvprintw(0, 0, (text + " (press ENTER to confirm):").c_str());
 
-        for (size_t i = 0; i < options.size(); i++)
+        for (size_t i = 0; i < text_lines.size(); ++i)
+        {
+            mvprintw(i, 0, text_lines[i].c_str());
+        }
+
+        for (size_t i = 0; i < options.size(); ++i)
         {
             if (i == choice)
-            {
                 attron(A_REVERSE);
-                mvprintw(i + 1, 0, options[i].c_str());
+
+            mvprintw(text_lines.size() + i, 0, options[i].c_str());
+
+            if (i == choice)
                 attroff(A_REVERSE);
-            }
-            else
-            {
-                mvprintw(i + 1, 0, options[i].c_str());
-            }
         }
 
         key = getch();
