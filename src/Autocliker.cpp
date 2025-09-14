@@ -19,25 +19,25 @@ void Autocliker::StartClickingAtCursor(int number_of_clicks, const int &delay_be
 {
     std::this_thread::sleep_for(std::chrono::seconds(time_to_start));
     auto startTime = std::chrono::steady_clock::now();
-    int temp = number_of_clicks;
+    int clicks_done = 0;
 
-    do
+    while (true)
     {
-        if (number_of_clicks <= 0)
+        if (clicks_done >= number_of_clicks)
             break;
+
         this->ClickAreaAtCursor();
+        clicks_done++;
+
         std::this_thread::sleep_for(std::chrono::milliseconds(delay_between_clicks));
 
-        number_of_clicks--;
-        if (number_of_clicks == 0)
-        {
-            number_of_clicks = temp;
+        auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(
+            std::chrono::steady_clock::now() - startTime
+        ).count();
+
+        if (elapsed >= click_execution_time)
             break;
-        }
-    } 
-    while (std::chrono::duration_cast<std::chrono::seconds>(
-                 std::chrono::steady_clock::now() - startTime)
-                 .count() < click_execution_time);
+    }
 }
 
 // Click at cursor

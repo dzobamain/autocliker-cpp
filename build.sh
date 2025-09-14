@@ -11,6 +11,7 @@ SRC=(
     src/Autocliker.cpp
     src/AutoclikerMenu.cpp
     src/settings.cpp
+    src/lang.cpp
 )
 
 INCLUDE_DIRS=(
