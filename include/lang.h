@@ -12,7 +12,10 @@ struct language_info
 
 static const std::map<std::string, language_info> languages = {
     {"en", {"language/lang_en.cfg", "English"}},
-    {"ua", {"language/lang_ua.cfg", "Українська"}}
+    {"ua", {"language/lang_ua.cfg", "Українська"}},
+    {"es", {"language/lang_es.cfg", "Español"}},
+    {"fr", {"language/lang_fr.cfg", "Français"}},
+    {"de", {"language/lang_de.cfg", "Deutsch"}}
 };
 
 std::map<std::string, std::string> load_language(const std::string& filename);
